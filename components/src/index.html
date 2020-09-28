@@ -29,42 +29,9 @@
 
     <pulumi-root></pulumi-root>
 
-    <pulumi-chooser type="language" options="typescript,python,go,csharp,fsharp,visualbasic"></pulumi-chooser>
-
-        <pulumi-choosable type="language" value="typescript">
-            <pre><code></code>I am some TypeScript.</pre>
-
-            <!-- Nested chooser with choosables. -->
-            <pulumi-chooser type="os" options="macos,windows"></pulumi-chooser>
-
-            <pulumi-choosable type="os" value="macos">
-                Some info on MacOS.
-            </pulumi-choosable>
-
-            <pulumi-choosable type="os" value="windows">
-                Some info on Windows.
-            </pulumi-choosable>
-
-        </pulumi-choosable>
-
-        <pulumi-choosable type="language" value="python">
-            <pre><code></code>I am some Python.</pre>
-        </pulumi-choosable>
-
-        <pulumi-choosable type="language" value="go">
-            <pre><code></code>I am some Go.</pre>
-        </pulumi-choosable>
-
-        <pulumi-choosable type="language" value="csharp">
-            <pre><code></code>I am some C#.</pre>
-        </pulumi-choosable>
-
-        <pulumi-choosable type="language" value="fsharp">
-            <pre><code></code>I am some F#.</pre>
-        </pulumi-choosable>
-
-        <pulumi-choosable type="language" value="visualbasic">
-            <pre><code></code>I am some VB.</pre>
-        </pulumi-choosable>
+    <pulumi-convert
+        from="tf"
+        endpoint="https://1qm03yusb2.execute-api.us-west-2.amazonaws.com/stage"
+        examples='[{"code":"data \"aws_ami\" \"ubuntu\" {\n    most_recent = true\n\n    filter {\n        name   = \"name\"\n        values = [\"ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*\"]\n    }\n\n    filter {\n        name   = \"virtualization-type\"\n        values = [\"hvm\"]\n    }\n\n    owners = [\"099720109477\"] # Canonical\n}\n\nresource \"aws_instance\" \"web\" {\n    ami           = \"${data.aws_ami.ubuntu.id}\"\n    instance_type = \"t2.micro\"\n\n    tags = {\n        Name = \"HelloWorld\"\n    }\n}\n","description":"This Terraform sample provisions an AWS EC2 instance running Ubuntu.","filename":"main.tf","name":"AWS EC2 Instance with Ubuntu"}]'></pulumi-convert>
 </body>
 </html>

@@ -1,0 +1,4 @@
+<pulumi-convert
+    from="{{ .from }}"
+    endpoint="{{ getenv "PULUMI_CONVERT_URL" }}"
+    examples="{{ .examples | jsonify }}"></pulumi-convert>
